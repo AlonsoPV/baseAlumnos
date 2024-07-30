@@ -42,3 +42,11 @@ th, td {
 #totales {
     text-align: center;
 }
+
+#materiasDIV th, #materiasDIV td ,#materiasDIV  {
+    text-align: left;
+    border: none;
+    padding: 0px;
+    display: inline-flex;
+}
+

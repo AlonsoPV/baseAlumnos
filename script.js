@@ -8,10 +8,6 @@ class Alumno {
 
     }
 
-    
-//objeto de alumnos con las propiedades
-
-
     agregarAlumno() {
 
         listaMatricula.push(this.matricula);
@@ -50,20 +46,37 @@ class Alumno {
         console.log("--------------------------BUSQUEDA--------------------");
         console.log(listaMatricula);
         console.log(matriculaB);
+
+        let encontrado = false;
+        let indexEncontrado = -1;
+    
         for (let index = 0; index < listaMatricula.length; index++) {
             if (matriculaB === listaMatricula[index]) {
+                encontrado = true;
+                indexEncontrado = index;
+                break;
+            }
+        }
+
+        
+            if (encontrado) {
                 console.log("Se encuentra");
-                var a = listaNombre[index];
                 document.getElementById("mensajeAlertaBusqueda").innerHTML = "Alumno Encontrado.";
-                document.getElementById("nombreAlumnoBusqueda").innerHTML = `Nombre:  ${listaNombre[index]}`;
-                document.getElementById("apellidoAlumnoBusqueda").innerHTML = `Apellido: ${listaApellidos[index]}`;
-                document.getElementById("edadAlumnoBusqueda").innerHTML = `Edad: ${listaEdad[index]}`;
+                document.getElementById("nombreAlumnoBusqueda").innerHTML = `Nombre:  ${listaNombre[indexEncontrado]}`;
+                document.getElementById("apellidoAlumnoBusqueda").innerHTML = `Apellido: ${listaApellidos[indexEncontrado]}`;
+                document.getElementById("edadAlumnoBusqueda").innerHTML = `Edad: ${listaEdad[indexEncontrado]}`;
+                document.getElementById("materiaAlumnoBusqueda").innerHTML = `Materias: ${listaMateria[indexEncontrado].map(m => `Materia: ${m.materia}. Calificaión: ${m.calificacion}`).join(', ')}`;
 
             } else {
-                document.getElementById("mensajeAlertaBusqueda").innerHTML = "Alumno No Encontrado.";
+                document.getElementById("mensajeAlertaBusqueda").innerHTML = 'Matrícula no encontrada';
+                document.getElementById("mensajeAlertaBusqueda").innerHTML = '';
+                document.getElementById("nombreAlumnoBusqueda").innerHTML = '';
+                document.getElementById("apellidoAlumnoBusqueda").innerHTML = '';
+                document.getElementById("edadAlumnoBusqueda").innerHTML = '';
+                document.getElementById("materiaAlumnoBusqueda").innerHTML = '';
             }
 
-        }
+        
     }
 
     agregarMateria(materia, calificacion) {
@@ -75,29 +88,27 @@ class Alumno {
 }
 
 let nuevoAlumno = null;
-
 const listaAlumnos = [];
 const listaMatricula = [];
 const listaNombre = [];
 const listaApellidos = [];
 const listaEdad = [];
-
 const listaMateria = [];
 
 
 function buscarMatricula() {
 
-    matriculaB = "A";
+    matriculaB = document.getElementById("matriculaAlumnoBUS").value;
     nuevoAlumno.buscarAlumno(matriculaB);
 }
 
 function inscribirAlumno() {
     const matricula = document.getElementById("matriculaAlumno").value;
-    const nombre = "Edgar"; //document.getElementById('nombreAlumno').value;
-    const apellidos = "Perez"; //document.getElementById('apellidoAlumno').value;
-    const edad = 27; //parseInt(document.getElementById('edadAlumno').value, 10);
-    const materia = "Historia";// document.getElementById("materiaInput").value;
-    const calificacion = 100;
+    const nombre = document.getElementById('nombreAlumno').value;
+    const apellidos = document.getElementById('apellidoAlumno').value;
+    const edad = parseInt(document.getElementById('edadAlumno').value, 10);
+    const materia = document.getElementById("tiraMateriasAlumno").value;
+    const calificacion = document.getElementById("tiraCalificacionAlumno").value;
 
     nuevoAlumno = new Alumno(matricula, nombre, apellidos, edad);
     nuevoAlumno.agregarMateria(materia, calificacion);
@@ -111,38 +122,20 @@ function inscribirAlumno() {
     return nuevoAlumno;
 }
 
-
-function inscribirMateria(){
-    const materia = "Historia";// document.getElementById("materiaInput").value;
-    const calificacion = 100;
-    nuevoAlumno = new Alumno();
-
-
-}
-
-
-/* 
-
+var i = 0;
 function inscribirMateria() {
-    
-    const materia = "Historia";// document.getElementById("materiaInput").value;
-    
-        nuevoAlumno.agregarMateria(materia);
-
-        // Actualiza la fila del alumno en la tabla con las nuevas materias
-        const tabla = document.getElementById('tablaAlumnos').getElementsByTagName('tbody')[0];
-        const filas = tabla.getElementsByTagName('tr');
-        for (let i = 0; i < filas.length; i++) {
-            const celdaMatricula = filas[i].getElementsByTagName('td')[0];
-            if (celdaMatricula.textContent === nuevoAlumno.matricula) {
-                const celdaMateria = filas[i].getElementsByTagName('td')[4];
-                celdaMateria.textContent = nuevoAlumno.materias.join(', ');
-                break;
-            }
-        }
-
-        document.getElementById("materiaInput").value = ''; // Limpiar el input de materia
    
+    const tabla = document.getElementById('materiasDIV').getElementsByTagName('tbody')[0];
+    const nuevaFila = tabla.insertRow();
+
+    const celdaMatricula = nuevaFila.insertCell(0);
+    const celdaNombre = nuevaFila.insertCell(1);
+
+    var materias = `<input type="text" id="tiraMateriasAlumno${i}" placeholder="Materia">`;
+    var calificaciones = `<input type="number" id="tiraCalificacionAlumno" placeholder="Calificación" class="calificacionInput">`;
+    
+    celdaMatricula.innerHTML = materias;
+    celdaNombre.innerHTML = calificaciones;
+i++;
 }
 
-  */
