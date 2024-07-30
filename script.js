@@ -5,7 +5,6 @@ class Alumno {
         this.apellidos = apellidos;
         this.edad = edad;
         this.materias = [];
-
     }
 
     agregarAlumno() {
