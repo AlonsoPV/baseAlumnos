@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>Proyecto: Base de datos de alumnos</title>
+</head>
+
+<body>
+    <h1>Grupo A</h1>
+    <div id="formularios">
+        <div id="formularioDatos">
+            <h2>Inscribir Alumno</h2>
+            <form id="datosAlumnos">
+                <input type="text" id="matriculaAlumno" placeholder="Matrícula" required>
+                <input type="text" id="nombreAlumno" placeholder="Nombre">
+                <input type="text" id="apellidoAlumno" placeholder="Apellido">
+                <input type="number" id="edadAlumno" placeholder="Edad">
+                <div id="materiasDIV">
+                    <span>
+                        <input type="text" id="tiraMateriasAlumno" placeholder="Materia">
+                        <input type="number" placeholder="Calificación" class="calificacionInput">
+
+                        <button type="button" id="agregarMateriaBoton" onclick="inscribirMateria()">Agregar otra
+                            materia</button>
+                            <div>
+                                
+                            </div>
+                    </span>
+                </div>
+                <button type="button" id="botonEnvio" onclick="inscribirAlumno()">Inscribir Alumno</button>
+                <p id="mensajeAlerta"></p>
+            </form>
+        </div>
+        <div id="formularioBusqueda">
+            <h2>Busqueda Alumno</h2>
+            <form id="busquedaAlumno">
+                <input type="text" id="matriculaAlumno" placeholder="Matrícula" required>
+                <span id="nombreAlumnoBusqueda">Nombre: </span>
+                <span id="apellidoAlumnoBusqueda">Apellido: </span>
+                <span id="edadAlumnoBusqueda">Edad: </span>
+                <span id="tiraMateriasAlumnoBusqueda">Materia: </span>
+                <button type="button" id="botonEnvio" onclick="buscarMatricula()">Buscar Alumno</button>
+                <p id="mensajeAlertaBusqueda"></p>
+            </form>
+        </div>
+    </div>
+    <table id="tablaAlumnos">
+        <thead>
+            <tr>
+                <th>Matrícula</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Materia</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+
+
+</body>
+
+</html>
+<!--      agregarMateria(materia) {
+    if (!this.materias.includes(materia)) {
+        this.materias.push(materia);
+    } else {
+        console.log(`El alumno ya está inscrito en la materia ${materia}`);
+    }
+}
+
+agregarCalificacion(materia, calificacion) {
+    if (this.materias.includes(materia)) {
+        this.calificaciones.push({ materia: materia, calificacion: calificacion });
+    } else {
+        console.log(`El alumno no está inscrito en la materia ${materia}`);
+    }
+}
+
+datosAlumno() {
+    console.log(`Nombre de alumno: ${this.nombre} ${this.apellidos}`);
+    console.log(`Edad: ${this.edad}`);
+    console.log(`Materias Inscritas: ${this.materias.join(", ")}`);
+    console.log(`Calificaciones por materia:`);
+    this.calificaciones.forEach(calificacion => {
+        console.log(`  ${calificacion.materia}: ${calificacion.calificacion}`);
+    });
+}  -->
+<!-- Descripción
+Crearán un pequeño proyecto con html, css y js con el cual podrán gestionar a los alumnos de una clase, así como sus calificaciones y sacar datos importantes sobre su performance.
+Requisitos
+
+1.- Crear una clase alumno, la cual debe incluir:
+Nombre
+Apellidos
+Edad
+Materias inscritas
+Calificaciones
+(Esta es la clase base, si quieren agregarle mas datos son libres de hacerla tan completa como quieran)
+
+2.- Alta de alumnos
+Una vez creada la clase desde su sitio, deberán dar de alta alumnos, 
+por defecto lo único que deben pedir como requisito al inicio es nombre, apellidos, edad.
+
+3.- Después deberas crear funciones y vistas que les ayuden a hacer lo siguiente:
+Inscribir un alumno a una clase.
+Asignarle sus calificaciones.
+Crear grupos y asignarle alumnos (Usen estructuras de datos).
+
+4.- Ya que tengan sus grupos con alumnos, deberán crear e implementar las siguientes funciones:
+Buscar por nombre.
+Buscar por apellido.
+Obtener promedio de un alumno.
+Obtener promedio del grupo.
+Obtener lista de alumnos ordenados ascendente y descendente por calificación.
+Con los datos almacenados en la clase, deben agregar otro ordenamiento o búsqueda bajo el parámetro que quieran (Este es el punto extra).
+5.- Preferentemente todo guarden en LocalStorage para que puedan tener persistencia de datos (Opcional x2) -->
